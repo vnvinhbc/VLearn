@@ -1,0 +1,32 @@
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /vlearn
+  error:
+    include-message: never
+    include-stacktrace: never
+
+spring:
+  application:
+    name: vlearn
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    show-sql: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never

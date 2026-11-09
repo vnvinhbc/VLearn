@@ -1,0 +1,2 @@
+-- Establish Flyway schema history without inventing domain tables.
+-- Domain schema starts in the next migration when its requirements are defined.

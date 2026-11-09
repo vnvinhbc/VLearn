@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:16-bookworm
+    container_name: vlearn_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: vlearn_db
+      POSTGRES_USER: vlearn_user
+      POSTGRES_PASSWORD: vlearn_password
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vlearn_user -d vlearn_db"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    volumes:
+      - vlearn_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  vlearn_postgres_data:
+    name: vlearn_postgres_data
